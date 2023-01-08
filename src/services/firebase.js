@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import 'firebase/auth';
-import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 
 // This is the config setting for firebase
 const firebaseConfig = {
@@ -22,34 +22,4 @@ export const auth = getAuth(app);
 // We need this in order to authenticate with google
 export const provider = new GoogleAuthProvider();
 
-// Sign in with google function
-export const signInWithGoogle = () => {
-    signInWithPopup(auth, provider).then((res) => {
-        console.log(res.user);
-    }).catch((err) => {
-        console.log(err.message);
-    })
-}
 
-export const signUp = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-    // Signed in 
-        const user = userCredential.user;
-        
-    // ...
-    }).catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-    // ..
-    })
-}
-
-export const signIn = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password).then((res) => {
-        console.log(res.user);
-        console.log("SIGN IN SUCCESSFUL");
-    }).catch((err) => {
-        console.log(err.message);
-    })
-}

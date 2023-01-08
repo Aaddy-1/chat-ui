@@ -1,4 +1,4 @@
-import * as React from 'react';
+// Mui imports
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,8 +13,10 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import GoogleIcon from '@mui/icons-material/Google';
-import { signIn } from '../services/firebase';
-import { BrowserRouter, Routes, Route, } from "react-router-dom"
+
+// React imports as well as functional imports
+import * as React from 'react';
+import { signIn } from '../services/signInUsers';
 import { signInWithGoogle } from '../services/signInUsers';
 import { useNavigate } from 'react-router-dom';
 

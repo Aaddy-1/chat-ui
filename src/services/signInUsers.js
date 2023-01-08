@@ -1,8 +1,7 @@
-import { initializeApp } from 'firebase/app';
 import 'firebase/auth';
-import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from './firebase';
-import { provider } from './firebase';
+import { signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth, provider } from './firebase';
+
 
 // Sign in using google account
 export const signInWithGoogle = () => {
