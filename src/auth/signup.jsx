@@ -56,7 +56,7 @@ export default function SignUp() {
   // 4: At least one number
 
   // We will match the number returned to the item in the message array
-  const emailErrorMessageArray = ["", "Please enter a valid email address"];
+  const emailErrorMessageArray = ["", "Please enter a valid email address", "This email is already in use"];
   const passwordErrorMessageArray = ["You password must be at least 8 characters", "Your password must not be more than 32 characters", 
   "Your password must have at least one lowercase letter", "Your password must have at least one uppercase letter", 
   "Your password must have at least one number", ""];
@@ -80,7 +80,15 @@ export default function SignUp() {
 
 
     if (emailIsIncorrect === 0 && passwordIsIncorrect === 5) {
-      signUp(data.get("email"), data.get("password"));
+      console.log("everything is correct");
+      signUp(data.get("email"), data.get("password"), data.get("firstName") + " " + data.get("lastName"))
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      })
+      
     }
 
   }

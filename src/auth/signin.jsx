@@ -19,7 +19,8 @@ import * as React from 'react';
 import { signIn } from '../services/signInUsers';
 import { signInWithGoogle } from '../services/signInUsers';
 import { useNavigate } from 'react-router-dom';
-
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { addUserToDb } from '../services/addUserToDb';
 
 function Copyright(props) {
   return (
@@ -40,6 +41,20 @@ const theme = createTheme({
   }
 });
 
+// const auth = getAuth();
+// // const user = 
+// console.log("lund");
+// // // console.log(user);
+// // this is our auth listener
+// // this will keep checking if a new user has signed in or not
+// auth.onAuthStateChanged((user) => {
+//   if (user) {
+//     alert(user.email);
+//   }
+// })
+
+//TODO: ADD GOOGLE SIGNINS TO DATABASE
+
 export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -50,6 +65,7 @@ export default function SignIn() {
     });
     signIn(data.get('email'), data.get('password'));
   };
+  // Our navigation object
   const navigate = useNavigate();
   return (
     <ThemeProvider theme={theme}>
