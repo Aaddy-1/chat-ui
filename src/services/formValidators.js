@@ -2,11 +2,15 @@ export const validateEmail = (email) => {
     let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     if (email.match(validRegex)) {
         console.log("Valid Email Address");
-        return 0;
+        // Return 0 for a valid email address
+        return "Valid Email Address";
+        // return 0;
     }
     else {
         console.log("Invalid Email Address");
-        return 1;
+        // Return 1 for invalid email address
+        return "Invalid Email Address";
+        // return 1;
     }
 }
 
@@ -19,29 +23,34 @@ export const validateEmail = (email) => {
 export const validatePassword = (password) => {
     if (password.length < 8) {
         console.log("Error: Password must be at least 8 characters");
-        return 0;
+        return "Error: Password must be at least 8 characters";
+        // return 0;
     }
     else if (password.length > 32) {
         console.log("Error: Password Must be lesser than 32 characters");
-        return 1;
+        return "Error: Password Must be lesser than 32 characters";
+        // return 1;
     }
     else if (password.search(/[a-z]/) < 0) {
         console.log("Error: Password must contain at least one lowercase letter");
-        return 2;
+        return "Error: Password must contain at least one lowercase letter";
+        // return 2;
     } 
     else if(password.search(/[A-Z]/) < 0) {
         console.log("Error: Password must contain at least one uppercase letter");
-        return 3;
+        return "Error: Password must contain at least one uppercase letter";
+        // return 3;
     } 
     else if(password.search(/[0-9]/) < 0) {
         console.log("Error: Password must contain at least one number");
-        return 4;
+        return "Error: Password must contain at least one number";
+        // return 4;
     }
     else {
         console.log("Success!");
-        return 5;
+        return "Success!";
+        // return 5;
     }
 }
 
-
-validateEmail("aadeeshsharma13@gmail.com");
+// validateEmail("aadeeshsharma13@gmail.com");

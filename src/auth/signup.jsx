@@ -63,23 +63,42 @@ export default function SignUp() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("sign up successful");
+    console.log("sign up triggered");
     const data = new FormData(event.currentTarget);
     console.log(data);
     
-    const emailResult = validateEmail(data.get("email"));
-    const passwordResult = validatePassword(data.get("password"));
+    // const emailResult = validateEmail(data.get("email"));
+    // const passwordResult = validatePassword(data.get("password"));
 
     // Checking if email is incorrect and setting the error message
-    setEmailIsIncorrect(emailResult);
-    setEmailMessage(emailErrorMessageArray[emailIsIncorrect]);
+    // setEmailIsIncorrect(emailResult);
+
+    // setEmailMessage(emailErrorMessageArray[emailIsIncorrect]);
+
+    setEmailMessage(validateEmail(data.get('email')));
+    console.log(emailMessage);
 
     // Checking if password is incorrect and setting the error message.
-    setPasswordIsIncorrect(passwordResult);
-    setPasswordMessage(passwordErrorMessageArray[passwordResult]);
+    // setPasswordIsIncorrect(passwordResult);
+    // setPasswordMessage(passwordErrorMessageArray[passwordResult]);
 
+    setPasswordMessage(validatePassword(data.get('password')));
+    console.log(passwordMessage);
 
-    if (emailIsIncorrect === 0 && passwordIsIncorrect === 5) {
+    // TRIGGER WARNING: CRINGE CODE
+    
+    // if (emailIsIncorrect === 0 && passwordIsIncorrect === 5) {
+    //   console.log("everything is correct");
+    //   signUp(data.get("email"), data.get("password"), data.get("firstName") + " " + data.get("lastName"))
+    //   .then((result) => {
+    //     console.log(result);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.message);
+    //   })
+    // }
+    
+    if (emailIsIncorrect === "Valid Email Address" && passwordIsIncorrect === "Success!") {
       console.log("everything is correct");
       signUp(data.get("email"), data.get("password"), data.get("firstName") + " " + data.get("lastName"))
       .then((result) => {
@@ -142,7 +161,8 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  error={emailIsIncorrect === 0 ? false : true}
+                  // error={emailIsIncorrect === 0 ? false : true}
+                  error={emailMessage === "Valid Email Address" ? false : true}
                   helperText={emailMessage}
                 />
               </Grid>
@@ -155,7 +175,8 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
-                  error={passwordIsIncorrect === 5 ? false : true}
+                  // error={passwordIsIncorrect === 5 ? false : true}
+                  error={passwordMessage === "Success!" ? false : true}
                   helperText={passwordMessage}
                 />
               </Grid>
