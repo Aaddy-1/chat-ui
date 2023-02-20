@@ -12,7 +12,9 @@ import ListItemText from '@mui/material/ListItemText';
 import { ListItem } from '@mui/material';
 import { TextField } from '@material-ui/core';
 import { Divider } from '@material-ui/core';
+import { alignProperty } from '@mui/material/styles/cssUtils';
 
+import chatDiv from '/Users/aadeesh/Programming/chat-ui/src/css/chatWindow.css';
 
 function Message({props}) {
 
@@ -22,8 +24,9 @@ function Message({props}) {
 
     return (
         <div>
-            <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+            <Box sx={{ width: '100%', bgcolor: 'background.paper'}}>
                 <List>
+                    <ListItem>
                     <Grid container>
                         <Grid item xs={12}>
                             <ListItemText align={alignment} primary={props.content}></ListItemText>
@@ -32,6 +35,7 @@ function Message({props}) {
                             <ListItemText align={alignment} secondary={sender}></ListItemText>
                         </Grid>
                     </Grid>
+                    </ListItem>
                 </List>
             </Box>
         </div>
@@ -47,7 +51,6 @@ function ChatWindow({props}) {
     const scrollToBottom = () => {
         endRef.current?.scrollIntoView({behavior: "smooth"})
     }
-    scrollToBottom(endRef.current);
     
     useEffect(() => {
         scrollToBottom();
@@ -61,12 +64,13 @@ function ChatWindow({props}) {
         )
     }
     return (
-        <div>
+        <div className='chatDiv'>
             <Box sx={{
-                width: 500,
-                height: 500,
+                width: 380,
+                height: 700,
                 backgroundColor: 'blue',
                 overflow: 'auto',
+                scrollbarWidth: 'none',
             }}>
                 <Grid container spacing={2}>
                     {messageList.map(msg => (
