@@ -13,8 +13,10 @@ import { ListItem } from '@mui/material';
 import { TextField } from '@material-ui/core';
 import { Divider } from '@material-ui/core';
 import { alignProperty } from '@mui/material/styles/cssUtils';
-
+import outerMostDiv from '/Users/aadeesh/Programming/chat-ui/src/css/chatWindow.css';
 import chatDiv from '/Users/aadeesh/Programming/chat-ui/src/css/chatWindow.css';
+import boxStyle from '../css/styles.jsx';
+import { textBoxStyle } from '../css/styles.jsx';
 
 function Message({props}) {
 
@@ -64,14 +66,8 @@ function ChatWindow({props}) {
         )
     }
     return (
-        <div className='chatDiv'>
-            <Box sx={{
-                width: 380,
-                height: 700,
-                backgroundColor: 'blue',
-                overflow: 'auto',
-                scrollbarWidth: 'none',
-            }}>
+        <div className='chatDiv' props>
+            <Box sx={boxStyle}>
                 <Grid container spacing={2}>
                     {messageList.map(msg => (
                         message(msg)
@@ -119,15 +115,13 @@ export const ChatTest = () => {
     }
 
     return (
-        <div>
-          {/* <Title />
-          <MessageList />
-          <SendMessageForm /> */}
-          {/* <Message props={{message: "Hello World"}}></Message> */}
+        <div className='outermostDiv'>
           <ChatWindow props={messageList}></ChatWindow>
           <Divider/>
-          <TextField inputRef={textRef} fullWidth onKeyDown={textKeyHandler}></TextField>
-          <button onClick={submitHandler}></button>
+          <div className='inputDiv'>
+            <TextField style={textBoxStyle} inputRef={textRef} fullWidth onKeyDown={textKeyHandler}></TextField>
+            <button onClick={submitHandler}>{"LUNDLUND"}</button>
+          </div>
        </div>
     )
 }

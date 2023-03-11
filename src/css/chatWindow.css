@@ -1,5 +1,12 @@
-.chatDiv {
+.outermostDiv {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.inputDiv {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
