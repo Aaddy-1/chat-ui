@@ -12,6 +12,8 @@ import ListItemText from '@mui/material/ListItemText';
 import { ListItem } from '@mui/material';
 import { TextField } from '@material-ui/core';
 import { Divider } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import { Send } from '@mui/icons-material';
 import { alignProperty } from '@mui/material/styles/cssUtils';
 import outerMostDiv from '/Users/aadeesh/Programming/chat-ui/src/css/chatWindow.css';
 import chatDiv from '/Users/aadeesh/Programming/chat-ui/src/css/chatWindow.css';
@@ -119,8 +121,14 @@ export const ChatTest = () => {
           <ChatWindow props={messageList}></ChatWindow>
           <Divider/>
           <div className='inputDiv'>
-            <TextField style={textBoxStyle} inputRef={textRef} fullWidth onKeyDown={textKeyHandler}></TextField>
-            <button onClick={submitHandler}>{"LUNDLUND"}</button>
+          <Grid container style={{padding: '20px'}}>
+                <Grid item xs={11}>
+                    <TextField style={textBoxStyle} id="outlined-basic-email" label="Type Something" fullWidth />
+                </Grid>
+                    <Grid xs={1} align="right">
+                        <Send/>
+                </Grid>
+            </Grid>
           </div>
        </div>
     )
